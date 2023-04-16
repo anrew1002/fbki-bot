@@ -7,5 +7,10 @@ def hello():
     return render_template("profile.html")
 
 
+@app.route("/game")
+def hello():
+    return render_template("wordsearch.html")
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
