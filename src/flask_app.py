@@ -8,7 +8,7 @@ def hello():
 
 
 @app.route("/game")
-def hello():
+def game():
     return render_template("wordsearch.html")
 
 
