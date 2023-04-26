@@ -1,16 +1,32 @@
-.field{
+body {
+  /* margin: 0;
+  padding: 0; */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.field {
   display: grid;
 }
 
-.field-row{
+.field-row {
   display: grid;
-  
+
 }
 
-.field-cell{
+.field-cell {
   cursor: pointer;
+  width: 18px;
+  height: 18px;
+
+  /* Чтобы кнопки не выделялись  */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.selected{
-  background-color:aqua;
+.selected {
+  background-color: aqua;
 }
