@@ -1,0 +1,12 @@
+:root {
+    --light: white;
+    --bright: rgba(232,143,105);
+    --dark: rgba(89,170,177);
+    --neutral: rgba(135,135,135);
+}
+
+@font-face {
+	font-family: 'Lilita One'; 
+	src: local('Lilita One'),
+		url(/static/fonts/LilitaOne-Regular.ttf); 
+}

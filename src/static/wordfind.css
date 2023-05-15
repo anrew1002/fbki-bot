@@ -1,32 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  color: var(--bright);
+  width: 100%;
+  text-align: center;
+  font-family: 'Lilita One';
+  font-size: 16vw;
+  margin-bottom: 2%;
+}
+body, html{
+  height: 100%;
+  background-color: var(--light);
+}
 body {
-  /* margin: 0;
-  padding: 0; */
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-}
-
-.field {
+  font-family: sans-serif;
+  width: 100%;
   display: grid;
+  place-items: center;
 }
 
-.field-row {
+.container {
   display: grid;
+  grid-template-rows: auto;
+  place-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.field{
+  display: grid;
+  row-gap:  0px;
+  justify-content: center;
+  background-color: var(--light);
+  width: min-content;
+
+  outline: 10px solid var(--dark);
+  border: 10px solid rgba(255, 0, 0, .0);
+  border-radius: 2em;
 
 }
 
-.field-cell {
+.field-row{
+  display: grid;
+  grid-template-columns: auto;
+  column-gap: 0px;
+  
+}
+
+.field-cell{
   cursor: pointer;
-  width: 18px;
-  height: 18px;
+  aspect-ratio: 1 / 1;
+  width: 7vw;
+  max-height: 5vh;
 
-  /* Чтобы кнопки не выделялись  */
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  display: grid;
+  place-items: center;;
 }
 
-.selected {
-  background-color: aqua;
+.selected{
+  background-color:var(--bright);
+}
+
+.button{
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: #cccccc00;
+}
+
+.mix{
+margin: 10px;
+}
+
+.clear{
+  margin-right: 10px;
+  z-index: 1;
+}
+
+.mix::before{
+  content: url('/static/icons/Refresh.svg');
+}
+.clear::before{
+  content: url('/static/icons/Eraser.svg');
+}
+
+.print-line{
+  background-color: var(--dark);
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  outline: 5px solid var(--dark);
+  border: 5px solid var(--dark);
+  border-radius: 2em;
+  position: relative;
+  
+}
+
+.container-line{
+  background-color: var(--light);
+  width: 65vw;
+  height: 20px;
+  border: 10px solid rgb(255, 255, 255);
+  border-radius: 0% 2em 2em 0%;
+  z-index: 1;
+}
+.text-line{
+  color: var(--neutral);
+  min-width: none;
+  width: min-content;
+  max-width: 60vw;
+  overflow: scroll;
+}
+
+.shading{
+  width: 101%;
+  height: 101%;
+  background-color: var(--dark);
+  position: absolute;
+  outline: 5px solid var(--dark);
+  border: 5px solid var(--dark);
+  border-radius: 2em;
+  top: -5px;
 }
