@@ -76,8 +76,8 @@ body {
   background: #cccccc00;
 }
 
-.mix{
-margin: 10px;
+.mix, .send{
+margin: 10px 30px;
 }
 
 .clear{
@@ -90,6 +90,10 @@ margin: 10px;
 }
 .clear::before{
   content: url('/static/icons/Eraser.svg');
+}
+
+.send::before{
+  content: url('/static/icons/Check-Circle.svg');
 }
 
 .print-line{
