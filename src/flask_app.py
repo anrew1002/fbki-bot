@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 
@@ -10,6 +10,14 @@ def hello():
 @app.route("/game")
 def game():
     return render_template("wordsearch.html")
+
+
+@app.route("/api", methods=['POST'])
+def api():
+    data = request.get_json()  # Get the JSON data from the request
+    # Process the data or perform any other operations
+    result = {'message': 'Data received successfully'}
+    return jsonify(result, data)
 
 
 if __name__ == "__main__":

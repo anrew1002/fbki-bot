@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,22 +9,26 @@
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='roots.css' ) }}>
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
         <div class="title">wordsearch</div>
         <div class="field" id="field"></div>
         <div class="buttons">
-        <button id="bt-mix" class="button mix"></button>
-        <button id="bt-send" class="button send"></button>
+            <button id="bt-mix" class="button mix"></button>
+            <button id="bt-send" class="button send"></button>
         </div>
         <div class="print-line">
             <div class="shading"></div>
             <button id="bt-clear" class="button clear"></button>
-            <div class="container-line"><div id="selected-letters" class="text-line"></div></div>
+            <div class="container-line">
+                <div id="selected-letters" class="text-line"></div>
+            </div>
         </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src={{ url_for('static', filename='game-wordsearch.js' ) }}></script>
     <script src={{ url_for('static', filename='server-side-app.js' ) }}></script>
+    <script src={{ url_for('static', filename='game-wordsearch.js' ) }}></script>
 </body>
+
 </html>
