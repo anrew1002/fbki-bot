@@ -1,3 +1,5 @@
+from server_side_game import Game
+
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
@@ -18,6 +20,15 @@ def api():
     # Process the data or perform any other operations
     result = {'message': 'Data received successfully'}
     return jsonify(result, data)
+
+
+@app.route("/api", methods=['GET'])
+def api_get():
+    data = request.get_json()  # Get the JSON data from the request
+    # Process the data or perform any other operations
+    game = Game()
+    matrix = game.getMatrix()
+    return jsonify(matrix)
 
 
 if __name__ == "__main__":
