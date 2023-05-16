@@ -137,6 +137,7 @@ function sendWord() {
 
     // Send the request with the payload
     xhr.send(payload);
+    clear()
 };
 
 btClear.addEventListener('click', clear);
@@ -163,7 +164,7 @@ btMix.addEventListener('click', function () {
             console.log(xhr.responseText);
             console.log(response);
             generateField(response);
-            
+
             console.log(response.message); // Process the response as needed
         } else {
             // Request failed
@@ -175,6 +176,7 @@ btMix.addEventListener('click', function () {
 
     // Send the request with the payload
     xhr.send(payload);
+    clear()
 });
 
 btSend.addEventListener('click', sendWord);
