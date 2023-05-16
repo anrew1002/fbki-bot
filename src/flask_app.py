@@ -1,8 +1,13 @@
 from server_side_game import Game
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify,session
+from flask_session import Session
 from auth import Auth
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
+# game = Game()
+# matrix = []
 
 
 @app.route("/")
@@ -19,6 +24,23 @@ def game():
 def api():
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
+    print(data)
+    print(type(data))
+    
+    word = data.get('data')
+    coordinates = data.get('coordinates')
+    matrix=session['matrix']
+
+    if len(coordinates) == 0: 
+        result = {'message': 'Data received unsuccessfully'}
+        return jsonify(result, data)
+    for i in range(0, len(coordinates)):
+        x = coordinates[i][0]
+        y = coordinates[i][1]
+        if matrix[x][y] != word[i]:
+            result = {'message': 'Data received unsuccessfully'}
+            return jsonify(result, data)
+    
     result = {'message': 'Data received successfully'}
     return jsonify(result, data)
 
@@ -29,6 +51,7 @@ def api_get():
     # Process the data or perform any other operations
     game = Game()
     matrix = game.matrix
+    session['matrix']=matrix
     return jsonify(matrix)
 
 
@@ -38,7 +61,7 @@ def auth():
     # Process the data or perform any other operations
     authPlugin = Auth()
     boolian = authPlugin.authenticate(data["userData"])
-    print(data["userData"])
+    # print(data["userData"])
     return jsonify(boolian, data)
 
 
