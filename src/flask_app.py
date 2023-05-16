@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from auth import Auth
 app = Flask(__name__)
 
 
@@ -18,6 +19,16 @@ def api():
     # Process the data or perform any other operations
     result = {'message': 'Data received successfully'}
     return jsonify(result, data)
+
+
+@app.route("/auth", methods=['POST'])
+def auth():
+    data = request.get_json()  # Get the JSON data from the request
+    # Process the data or perform any other operations
+    authPlugin = Auth()
+    boolian = authPlugin.authenticate(data["userData"])
+    print(data["userData"])
+    return jsonify(boolian, data)
 
 
 if __name__ == "__main__":
