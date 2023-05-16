@@ -1,3 +1,5 @@
+from server_side_game import Game
+
 from flask import Flask, render_template, request, jsonify
 from auth import Auth
 app = Flask(__name__)
@@ -20,6 +22,15 @@ def api():
     result = {'message': 'Data received successfully'}
     return jsonify(result, data)
 
+
+
+@app.route("/matrix", methods=['POST'])
+def api_get():
+    data = request.get_json()  # Get the JSON data from the request
+    # Process the data or perform any other operations
+    game = Game()
+    matrix = game.matrix
+    return jsonify(matrix)
 
 @app.route("/auth", methods=['POST'])
 def auth():

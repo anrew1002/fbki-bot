@@ -8,9 +8,10 @@
 // let selectedLetters = document.getElementById("selected-letters");
 // let dynamicString = "";
 let game = new Game;
+let size = 12;
 
 function getIndex(y, x) {
-    return y * game.countRows + x;
+    return y * size + x;
 };
 
 function getPoints(idx) {
@@ -21,8 +22,8 @@ function getPoints(idx) {
         y = 0;
     }
     else {
-        x = Math.floor(idx / game.countRows);
-        y = Math.floor(idx % game.countRows);
+        x = Math.floor(idx / size);
+        y = Math.floor(idx % size);
     }
     return [x, y];
 };
@@ -39,15 +40,17 @@ function clearBox(elementID) {
     }
 }
 
-function generateField() {
+function generateField(matrix) {
+    // console.log(matrix);
     clearBox("field");
-    field.style.gridTemplateRows = "repeat(" + game.countRows + ", 1fr)";
-    for (let i = 0; i < game.countRows; i++) {
+    game.setMatrix(matrix);
+    field.style.gridTemplateRows = "repeat(" + size + ", 1fr)";
+    for (let i = 0; i < size; i++) {
         let row = document.createElement('div');
         row.classList.add('field-row');
         field.appendChild(row);
-        row.style.gridTemplateColumns = "repeat(" + game.countColumns + ", 1fr)";
-        for (let j = 0; j < game.countColumns; j++) {
+        row.style.gridTemplateColumns = "repeat(" + size + ", 1fr)";
+        for (let j = 0; j < size; j++) {
             let cell = document.createElement('div');
             cell.classList.add('field-cell');
             row.appendChild(cell);
@@ -110,7 +113,7 @@ function sendWord() {
     const inputData = selectedLetters.textContent
 
     // Create an XMLHttpRequest object
-    const xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
 
     // Configure the request
     xhr.open('POST', '/api', true);
@@ -139,15 +142,44 @@ function sendWord() {
 btClear.addEventListener('click', clear);
 
 btMix.addEventListener('click', function () {
-    clear();
-    game.shuffleRow();
-    game.transposing();
-    generateField();
+    // Assuming you have an HTML form with an input field and a submit button
+    // Prevent the form from submitting normally
+
+    // Get the input value
+    const inputData = selectedLetters.textContent
+
+    // Create an XMLHttpRequest object
+    let xhr = new XMLHttpRequest();
+
+    // Configure the request
+    xhr.open('POST', '/matrix', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Set up the callback function for when the request completes
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Request succeeded
+            const response = JSON.parse(xhr.responseText);
+            console.log(xhr.responseText);
+            console.log(response);
+            generateField(response);
+            
+            console.log(response.message); // Process the response as needed
+        } else {
+            // Request failed
+            console.error('Request failed. Status:', xhr.status);
+        }
+    };
+    // Create a JSON payload with the input data
+    const payload = JSON.stringify({ data: inputData, userData: window.Telegram.WebApp.initData });
+
+    // Send the request with the payload
+    xhr.send(payload);
 });
 
 btSend.addEventListener('click', sendWord);
 
-generateField();
+// generateField();
 
 document.addEventListener('DOMContentLoaded', e => {
 
