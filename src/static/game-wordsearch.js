@@ -152,8 +152,8 @@ generateField();
 document.addEventListener('DOMContentLoaded', e => {
 
     window.Telegram.WebApp.enableClosingConfirmation()
-    let photo = document.getElementById("user_photo");
-    photo.src = window.Telegram.WebApp.initDataUnsafe.user.photo_url
+    // let photo = document.getElementById("user_photo");
+    // photo.src = window.Telegram.WebApp.initDataUnsafe.user.photo_url
 
     // Assuming you have an HTML form with an input field and a submit button
     // Prevent the form from submitting normally
