@@ -22,12 +22,12 @@ def api():
     return jsonify(result, data)
 
 
-@app.route("/api", methods=['GET'])
+@app.route("/matrix", methods=['POST'])
 def api_get():
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
     game = Game()
-    matrix = game.getMatrix()
+    matrix = game.matrix
     return jsonify(matrix)
 
 
