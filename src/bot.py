@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from database import Database
-from settings import TOKEN, MYSQL_PASS
+from app.settings import TOKEN, MYSQL_PASS
 
 bot = Bot(token=TOKEN)
 dpatch = Dispatcher(bot=bot)

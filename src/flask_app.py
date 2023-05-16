@@ -23,7 +23,6 @@ def api():
     return jsonify(result, data)
 
 
-
 @app.route("/matrix", methods=['POST'])
 def api_get():
     data = request.get_json()  # Get the JSON data from the request
@@ -31,6 +30,7 @@ def api_get():
     game = Game()
     matrix = game.matrix
     return jsonify(matrix)
+
 
 @app.route("/auth", methods=['POST'])
 def auth():
@@ -43,4 +43,4 @@ def auth():
 
 
 if __name__ == "__main__":
-     app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0')
