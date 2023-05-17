@@ -1,4 +1,5 @@
 from server_side_game import Game
+from server_side_game import drawNewMatrix
 
 from flask import Flask, render_template, request, jsonify, session
 from flask_session import Session
@@ -49,7 +50,14 @@ def api():
 
     result = {'message': 'Data received successfully'}
     valid = db.getWord(word)
-    return jsonify(valid != '')
+    
+    newMatrix = drawNewMatrix(matrix, coordinates)
+    
+    if (valid != ''):
+        session['matrix'] = newMatrix
+        return jsonify(valid != '', newMatrix)
+    else:
+        return jsonify(valid != '', matrix)
 
 
 @app.route("/matrix", methods=['POST'])

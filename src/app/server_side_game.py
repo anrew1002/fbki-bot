@@ -1,6 +1,7 @@
 
 import math
 from random import randint
+from copy import deepcopy
 
 def getRandomInt(min_value, max_value):
     return randint(min_value, max_value)
@@ -59,6 +60,18 @@ class Game():
         self._matrixLetter = newArray
         
     
+def drawNewMatrix(matrix, points):
+    newMatrix = deepcopy(matrix)
+    for point in points:
+        x = point[0]
+        y = point[1]
+        t = getRandomInt(65, 90)
+        newMatrix[x][y] = chr(t)
+    return newMatrix
+                
+    
 if __name__=='__main__':
     game= Game()
     game.createMatrix()
+    
+    

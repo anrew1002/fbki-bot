@@ -126,6 +126,7 @@ function sendWord() {
         if (xhr.status === 200) {
             // Request succeeded
             const response = JSON.parse(xhr.responseText);
+            generateField(response[1]);
             console.log(response.message); // Process the response as needed
         } else {
             // Request failed
@@ -139,6 +140,7 @@ function sendWord() {
     // Send the request with the payload
     xhr.send(payload);
     clear();
+        
 };
 
 
