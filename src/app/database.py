@@ -39,7 +39,7 @@ class Database():
         sql = f"SELECT word FROM dictionary WHERE word =%s LIMIT 1"
         self.cursor.execute(sql, [word])
         result_select = self.cursor.fetchone()
-        print(result_select)
+        # print(result_select)
         if not result_select:
             return ""
         return result_select['word']
@@ -53,7 +53,7 @@ class Database():
         sql = "SELECT users.nickname, l.word , LENGTH(l.word) as `len` FROM `logs` as l JOIN users ON users.id = l.user_id ORDER BY `len` DESC LIMIT 10;"
         self.cursor.execute(sql)
         result_select = self.cursor.fetchall()
-        print(result_select)
+        # print(result_select)
         if not result_select:
             return ""
         return result_select

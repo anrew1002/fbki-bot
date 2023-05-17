@@ -30,8 +30,8 @@ def api():
     db = Database()
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
-    print(data)
-    print(type(data))
+    # print(data)
+    # print(type(data))
 
     word = data.get('data')
     coordinates = data.get('coordinates')
@@ -80,10 +80,13 @@ def auth():
     authPlugin = Auth()
     boolian = authPlugin.authenticate(data["userData"])["bool"]
     data = authPlugin.authenticate(data["userData"])["data"]
+
     # print(data["userData"])
-    user_data = json.loads(data[2][5:])
-    session['auth'] = boolian
-    session['user_id'] = user_data["id"]
+    user_data = []
+    if boolian:
+        user_data = json.loads(data[2][5:])
+        session['user_id'] = user_data["id"]
+        session['auth'] = boolian
 
     return jsonify(boolian, user_data)
 
