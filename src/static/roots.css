@@ -1,8 +1,9 @@
 :root {
-    --light: white;
-    --bright: rgba(232,143,105);
-    --dark: rgba(89,170,177);
-    --neutral: rgba(135,135,135);
+    --light: var(--tg-theme-bg-color);
+    --bright: var(--tg-theme-button-color);
+    --dark: var( --tg-theme-secondary-bg-color);
+    --neutral: var(--tg-theme-hint-color);
+    
 }
 
 @font-face {

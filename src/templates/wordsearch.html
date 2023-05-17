@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='wordfind.css' ) }}>
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='roots.css' ) }}>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>Document</title>
 </head>
 
 <body>
+    <script> let tg = window.Telegram.WebApp; </script>
     <div class="user_profile">
         <span id="status">Best!</span>
         <img id="user_photo" src="" alt="">
