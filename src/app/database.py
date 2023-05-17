@@ -9,6 +9,7 @@ class Database():
                  database="dev_fbki_app",
                  host="localhost"
                  ) -> None:
+        print(password)
         self.db = mysql.connector.connect(
             password=password, user=user, database=database, host=host)
         self.cursor = self.db.cursor(dictionary=True)
