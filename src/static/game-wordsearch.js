@@ -140,7 +140,7 @@ function sendWord() {
     // Send the request with the payload
     xhr.send(payload);
     clear();
-        
+
 };
 
 
@@ -189,7 +189,16 @@ btSend.addEventListener('click', sendWord);
 
 document.addEventListener('DOMContentLoaded', e => {
 
+    let status = document.getElementById("status");
+    status.textContent = window.Telegram.WebApp.initDataUnsafe.user.first_name + window.Telegram.WebApp.initDataUnsafe.user.last_name
+
     window.Telegram.WebApp.enableClosingConfirmation()
+
+    authorization()
+
+}
+);
+function authorization() {
     // let photo = document.getElementById("user_photo");
     // photo.src = window.Telegram.WebApp.initDataUnsafe.user.photo_url
 
@@ -225,4 +234,3 @@ document.addEventListener('DOMContentLoaded', e => {
     // Send the request with the payload
     xhr.send(payload);
 }
-);

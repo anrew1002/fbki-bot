@@ -11,10 +11,13 @@
   font-size: 16vw;
   margin-top: 24%;
 }
-body, html{
+
+body,
+html {
   height: 100%;
   background-color: var(--light);
 }
+
 body {
   font-family: sans-serif;
   width: 100%;
@@ -30,9 +33,9 @@ body {
   min-height: 100vh;
 }
 
-.field{
+.field {
   display: grid;
-  row-gap:  0px;
+  row-gap: 0px;
   justify-content: center;
   margin-top: 2%;
   background-color: var(--light);
@@ -44,28 +47,29 @@ body {
 
 }
 
-.field-row{
+.field-row {
   display: grid;
   grid-template-columns: auto;
   column-gap: 0px;
-  
+
 }
 
-.field-cell{
+.field-cell {
   cursor: pointer;
   aspect-ratio: 1 / 1;
   width: 7vw;
   max-height: 5vh;
 
   display: grid;
-  place-items: center;;
+  place-items: center;
+  ;
 }
 
-.selected{
-  background-color:var(--bright);
+.selected {
+  background-color: var(--bright);
 }
 
-.button{
+.button {
   text-decoration: none;
   user-select: none;
   outline: none;
@@ -77,27 +81,29 @@ body {
   background: #cccccc00;
 }
 
-.mix, .send{
-margin: 10px 30px;
+.mix,
+.send {
+  margin: 10px 30px;
 }
 
-.clear{
+.clear {
   margin-right: 10px;
   z-index: 1;
 }
 
-.mix::before{
+.mix::before {
   content: url('/static/icons/Refresh.svg');
 }
-.clear::before{
+
+.clear::before {
   content: url('/static/icons/Eraser.svg');
 }
 
-.send::before{
+.send::before {
   content: url('/static/icons/Check-Circle.svg');
 }
 
-.print-line{
+.print-line {
   background-color: var(--dark);
   width: 80vw;
   display: flex;
@@ -108,10 +114,10 @@ margin: 10px 30px;
   border: 5px solid var(--dark);
   border-radius: 2em;
   position: relative;
-  
+
 }
 
-.container-line{
+.container-line {
   background-color: var(--light);
   width: 65vw;
   height: 20px;
@@ -119,7 +125,8 @@ margin: 10px 30px;
   border-radius: 0% 2em 2em 0%;
   z-index: 1;
 }
-.text-line{
+
+.text-line {
   color: var(--neutral);
   min-width: none;
   width: min-content;
@@ -127,7 +134,7 @@ margin: 10px 30px;
   overflow: scroll;
 }
 
-.shading{
+.shading {
   width: 101%;
   height: 101%;
   background-color: var(--dark);
@@ -138,7 +145,7 @@ margin: 10px 30px;
   top: -5px;
 }
 
-.user_profile{
+.user_profile {
   background-color: rgb(255, 255, 255);
   outline: 5px solid var(--dark);
   border: 5px solid var(--dark);
@@ -149,4 +156,10 @@ margin: 10px 30px;
   min-height: 8vh;
   display: grid;
   place-items: center;
+}
+
+#status {
+  color: var(--bright);
+  font-family: 'Lilita One', sans-serif;
+  font-size: 7vw;
 }
