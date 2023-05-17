@@ -229,8 +229,8 @@ function authorization() {
     };
 
     // Create a JSON payload with the input data
-    // const payload = JSON.stringify({ data: inputData, userData: window.Telegram.WebApp.initData });
-    const payload = JSON.stringify({ userData: "query_id=AAFXbXBIAAAAAFdtcEjftsBg&user=%7B%22id%22%3A1215327575%2C%22first_name%22%3A%22Andrey%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22ontThou%22%2C%22language_code%22%3A%22ru%22%7D&auth_date=1684212250&hash=bd3330938286fac2ab07b1732d8ef231b0cb1c4b89281e93eafa89b92b8912e3" });
+    const payload = JSON.stringify({ data: inputData, userData: window.Telegram.WebApp.initData });
+    // const payload = JSON.stringify({ userData: "query_id=AAFXbXBIAAAAAFdtcEjftsBg&user=%7B%22id%22%3A1215327575%2C%22first_name%22%3A%22Andrey%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22ontThou%22%2C%22language_code%22%3A%22ru%22%7D&auth_date=1684212250&hash=bd3330938286fac2ab07b1732d8ef231b0cb1c4b89281e93eafa89b92b8912e3" });
 
     // Send the request with the payload
     xhr.send(payload);
