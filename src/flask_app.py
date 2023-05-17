@@ -86,9 +86,11 @@ def auth():
     user_data = []
     if boolian:
         user_data = json.loads(data[2][5:])
-        if db.is_registered_user(data["user_id"]):
+        if db.is_registered_user(int(data["user_id"])):
             session['user_id'] = user_data["id"]
             session['auth'] = boolian
+        else:
+            boolian = False
 
     return jsonify(boolian, user_data)
 
