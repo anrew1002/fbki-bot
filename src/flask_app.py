@@ -3,6 +3,7 @@ from server_side_game import Game
 from flask import Flask, render_template, request, jsonify, session
 from flask_session import Session
 from auth import Auth
+from database import Database
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_COOKIE_NAME'] = 'wordsearchgame'
@@ -23,6 +24,7 @@ def game():
 
 @app.route("/api", methods=['POST'])
 def api():
+    db = Database()
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
     print(data)
@@ -30,7 +32,7 @@ def api():
 
     word = data.get('data')
     coordinates = data.get('coordinates')
-    if not session.get("name"):
+    if not session.get("matrix"):
         return jsonify({"message": 'get matrix first'})
     matrix = session['matrix']
 
@@ -45,7 +47,8 @@ def api():
             return jsonify(result, data)
 
     result = {'message': 'Data received successfully'}
-    return jsonify(result, data)
+    valid = db.getWord(word)
+    return jsonify(valid != '')
 
 
 @app.route("/matrix", methods=['POST'])

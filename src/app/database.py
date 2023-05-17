@@ -12,9 +12,14 @@ class Database():
             password=password, user=user, database=database, host=host)
         self.cursor = self.db.cursor(dictionary=True)
 
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Database, cls).__new__(cls)
+        return cls.instance
+
     def get_nickname(self, user_id):
-        sql = f"SELECT * FROM users WHERE id ={user_id} LIMIT 1"
-        self.cursor.execute(sql)
+        sql = f"SELECT * FROM users WHERE id =%s LIMIT 1"
+        self.cursor.execute(sql, [user_id])
         result_select = self.cursor.fetchall()
         if not result_select:
             return ""
@@ -28,3 +33,12 @@ class Database():
         val = (user_id, nickname)
         self.cursor.execute(sql, val)
         self.db.commit()
+
+    def getWord(self, word):
+        sql = f"SELECT word FROM dictionary WHERE word =%s LIMIT 1"
+        self.cursor.execute(sql, [word])
+        result_select = self.cursor.fetchone()
+        print(result_select)
+        if not result_select:
+            return ""
+        return result_select['word']

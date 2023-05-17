@@ -80,7 +80,7 @@ function selectLetter(event) {
         selectedLetters.textContent = dynamicString;
         event.target.classList.toggle("selected");
         game.selectedPoints.pop();
-        
+
 
     }
     else {
@@ -138,8 +138,9 @@ function sendWord() {
     const payload = JSON.stringify({ data: inputData, coordinates: game.selectedPoints })
     // Send the request with the payload
     xhr.send(payload);
-    clear()
+    clear();
 };
+
 
 btClear.addEventListener('click', clear);
 
@@ -177,7 +178,7 @@ btMix.addEventListener('click', function () {
 
     // Send the request with the payload
     xhr.send(payload);
-    clear()
+    clear();
 });
 
 btSend.addEventListener('click', sendWord);
