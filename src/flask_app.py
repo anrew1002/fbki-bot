@@ -86,7 +86,7 @@ def auth():
     user_data = []
     if boolian:
         user_data = json.loads(data[2][5:])
-        if db.is_registered_user(int(data[1])):
+        if db.is_registered_user(user_data["id"]):
             session['user_id'] = user_data["id"]
             session['auth'] = boolian
         else:
