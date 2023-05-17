@@ -1,9 +1,10 @@
 import mysql.connector
+from settings import MYSQL_PASS
 
 
 class Database():
     def __init__(self,
-                 password="user2020",
+                 password=MYSQL_PASS,
                  user="telegram_bot",
                  database="dev_fbki_app",
                  host="localhost"

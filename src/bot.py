@@ -11,10 +11,10 @@ dpatch = Dispatcher(bot=bot)
 # game_btn=InlineKeyboardButton(text='Играть',login_url='')
 
 mydb = Database(
-    host="localhost",
-    user="telegram_bot",
-    password=MYSQL_PASS,
-    database="dev_fbki_app"
+    # host="localhost",
+    # user="telegram_bot",
+    # password=MYSQL_PASS,
+    # database="dev_fbki_app"
 )
 
 
