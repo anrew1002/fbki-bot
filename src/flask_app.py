@@ -25,7 +25,7 @@ def game():
 
 @app.route("/api", methods=['POST'])
 def api():
-    db = Database(password=MYSQL_PASS)
+    db = Database()
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
     print(data)
