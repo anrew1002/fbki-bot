@@ -75,6 +75,7 @@ def api_get():
 
 @app.route("/auth", methods=['POST'])
 def auth():
+    db = Database()
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
     authPlugin = Auth()
@@ -85,8 +86,9 @@ def auth():
     user_data = []
     if boolian:
         user_data = json.loads(data[2][5:])
-        session['user_id'] = user_data["id"]
-        session['auth'] = boolian
+        if db.is_registered_user(data["user_id"]):
+            session['user_id'] = user_data["id"]
+            session['auth'] = boolian
 
     return jsonify(boolian, user_data)
 
