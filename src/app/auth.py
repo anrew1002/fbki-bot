@@ -25,5 +25,5 @@ class Auth:
         calculated_hash = hmac.new(
             secret_key, data_check_string.encode(), hashlib.sha256).hexdigest()
 
-        # return calculated_hash == telegram_hash
-        return data_check_arr
+        return {"bool": calculated_hash == telegram_hash, "data": data_check_arr}
+        # return data_check_arr

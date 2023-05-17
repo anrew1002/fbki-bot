@@ -190,8 +190,9 @@ btSend.addEventListener('click', sendWord);
 document.addEventListener('DOMContentLoaded', e => {
 
     let status = document.getElementById("status");
-    status.textContent = window.Telegram.WebApp.initDataUnsafe.user.first_name + window.Telegram.WebApp.initDataUnsafe.user.last_name
-
+    if (window.Telegram.WebApp !== undefined) {
+        status.textContent = [window.Telegram.WebApp.initDataUnsafe.user?.first_name, window.Telegram.WebApp.initDataUnsafe.user?.last_name].join(' ')
+    }
     window.Telegram.WebApp.enableClosingConfirmation()
 
     authorization()

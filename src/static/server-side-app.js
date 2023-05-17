@@ -16,22 +16,11 @@ function getRandomInt(min, max) {
 
 class Game {
 
-    // constructor() {
-
-    //     this._size = 12;
-
-    //     // this._selectedPoints = new Array();
-    //     this.matrix = new Array(this._size);
-
-    //     for (let i = 0; i < this._countRows; i++) {
-    //         this.matrix[i] = new Array(this._size);
-    //     }
-    // }
     constructor() {
         this._size = 12;
         this._selectedPoints = [];
         this.matrix = (new Array(this._size)).fill([])
-      }
+    }
 
     get countRows() {
         return this._countRows;
@@ -48,53 +37,13 @@ class Game {
     set selectedPoints(value) {
         this._selectedPoints = value;
     }
-    
-    setMatrix(arr){
-        if (arr[0].length != 0){
+
+    setMatrix(arr) {
+        if (arr[0].length != 0) {
             for (var i = 0; i < this._size; i++)
                 this.matrix[i] = arr[i].slice();
-            
+
             console.log(this.matrix);
         }
     }
-
-//     createMatrix() {
-
-//         this._matrixLetter = new Object();
-
-//         for (let i = 0; i < this._countRows; i++) {
-//             this._matrixLetter[i] = new Array();
-//             for (let j = 0; j < this._countColumns; j++) {
-//                 let letterTemp = getRandomInt(65, 90);
-//                 this._matrixLetter[i][j] = String.fromCharCode(letterTemp);
-//             }
-//         }
-
-//         return this._matrixLetter;
-//     }
-
-//     get matrix() {
-//         return this._matrixLetter;
-//     }
-
-//     shuffleRow() {
-//         for (let i = this.countRows - 1; i > 0; i--) {
-//             let j = Math.floor(Math.random() * (i + 1));
-//             [this._matrixLetter[i], this._matrixLetter[j]] = [this._matrixLetter[j], this._matrixLetter[i]];
-//         }
-//     }
-
-//     transposing() {
-//         var newArray = [];
-//         for (var i = 0; i < this.countRows; i++) {
-//             newArray.push([]);
-//         }
-
-//         for (var i = 0; i < this.countRows; i++) {
-//             for (var j = 0; j < this.countRows; j++) {
-//                 newArray[j].push(this._matrixLetter[i][j]);
-//             }
-//         }
-//         this._matrixLetter = newArray;
-//     }
 }

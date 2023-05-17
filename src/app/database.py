@@ -44,3 +44,8 @@ class Database():
         if not result_select:
             return ""
         return result_select['word']
+
+    def setLog(self, user_id, word):
+        sql = f"INSERT INTO logs (user_id,word) VALUES(%s,%s)"
+        self.cursor.execute(sql, [user_id, word])
+        self.db.commit()

@@ -6,6 +6,7 @@ from flask_session import Session
 from auth import Auth
 from database import Database
 from settings import TOKEN, MYSQL_PASS
+import json
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_COOKIE_NAME'] = 'wordsearchgame'
@@ -50,11 +51,13 @@ def api():
 
     result = {'message': 'Data received successfully'}
     valid = db.getWord(word)
-    
+
     newMatrix = drawNewMatrix(matrix, coordinates)
-    
+
     if (valid != ''):
         session['matrix'] = newMatrix
+        if session.get("auth") and session['auth']:
+            db.setLog(session["user_id"], word)
         return jsonify(valid != '', newMatrix)
     else:
         return jsonify(valid != '', matrix)
@@ -75,9 +78,14 @@ def auth():
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
     authPlugin = Auth()
-    boolian = authPlugin.authenticate(data["userData"])
+    boolian = authPlugin.authenticate(data["userData"])["bool"]
+    data = authPlugin.authenticate(data["userData"])["data"]
     # print(data["userData"])
-    return jsonify(boolian, data)
+    user_data = json.loads(data[2][5:])
+    session['auth'] = boolian
+    session['user_id'] = user_data["id"]
+
+    return jsonify(boolian, user_data)
 
 
 if __name__ == "__main__":
