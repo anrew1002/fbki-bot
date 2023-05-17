@@ -3,7 +3,7 @@ import logging
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from database import Database
+from app.database import Database
 from app.settings import TOKEN, MYSQL_PASS
 
 bot = Bot(token=TOKEN)

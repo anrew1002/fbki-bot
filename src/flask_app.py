@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify, session
 from flask_session import Session
 from auth import Auth
 from database import Database
+from settings import TOKEN, MYSQL_PASS
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_COOKIE_NAME'] = 'wordsearchgame'
@@ -24,7 +25,7 @@ def game():
 
 @app.route("/api", methods=['POST'])
 def api():
-    db = Database()
+    db = Database(password=MYSQL_PASS)
     data = request.get_json()  # Get the JSON data from the request
     # Process the data or perform any other operations
     print(data)
